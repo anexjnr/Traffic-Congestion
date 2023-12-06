@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Prediction Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://thumbs.dreamstime.com/b/city-road-traffic-apartment-buildings-pedestrians-sidewalk-vector-illustration-196681749.jpg'); /* Replace with the path to your background image */
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .result-section {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .result-section h2 {
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 10px;
+        }
+
+        .predicted-values {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .mse-details {
+            margin-top: 20px;
+        }
+
+        .mse-details p {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .visualizations img {
+            width: 50%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-back {
+            background-color: #007BFF;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 style="color: black;">Traffic Prediction Results</h1>
+
+        <div class="result-section predicted-values">
+            <h2>Predicted Values</h2>
+            <p>Traffic Congestion: {{ y_ensemble_congestion }}</p>
+            <p>Number of Vehicles: {{ y_ensemble_vehicles }}</p>
+        </div>
+
+        <div class="result-section mse-details">
+            <h2>Accuracy</h2>
+            <p>Congestion Accuracy: {{ y_acc_ensemble_congestion }}</p>
+            <p>Number of Vehicles Accuracy: {{ y_acc_ensemble_vehicles }}</p>
+        </div>
+
+<!-- ... (previous code) ... -->
+
+<div class="result-section visualizations">
+    <h2>Visualizations</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/lr_visualization_congestion.png') }}" alt="Linear Regression Visualization">
+        </div>
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/lr_visualization_vehicles.png') }}" alt="SVR Visualization">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/svr_visualization_congestion.png') }}" alt="Linear Regression Visualization">
+        </div>
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/svr_visualization_vehicles.png') }}" alt="SVR Visualization">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/nn_visualization_congestion.png') }}" alt="Linear Regression Visualization">
+        </div>
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/nn_visualization_vehicles.png') }}" alt="SVR Visualization">
+        </div>
+    </div>
+</div>
+
+        <a href="/" class="btn btn-back btn-block">Back to Index</a>
+    </div>
+
+</body>
+
+</html>
